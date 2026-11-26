@@ -11,9 +11,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="人數統計" />
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E6%AD%A3%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
-    <!-- Logo favicon: a minimal tally-mark stamp (the character 正 used for counting) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E6%AD%A3%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E8%A8%88%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
+    <!-- Logo favicon: a minimal seal-style stamp with the character 計 (count) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E8%A8%88%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -260,7 +260,7 @@
       .error { margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--danger); }
       .hint { font-size: 0.875rem; color: var(--dim); }
 
-      section.panel { padding: 0.75rem; margin-bottom: 1.25rem; }
+      .panel { padding: 1rem; margin-bottom: 1.25rem; }
       .row { display: flex; gap: 0.5rem; }
       .row > .grow { flex: 1 1 auto; min-width: 0; }
       .row > .shrink { flex: 0 0 auto; }
@@ -429,10 +429,10 @@
     <main>
       <!-- Tool name -->
       <header class="app-head">
-        <svg class="logo-mark" viewBox="0 0 512 512" role="img" aria-label="人數統計小幫手標誌：正字記數印章">
+        <svg class="logo-mark" viewBox="0 0 512 512" role="img" aria-label="人數統計小幫手標誌：計字印章">
           <rect width="512" height="512" rx="112" fill="#f6f2ea" />
           <rect x="40" y="40" width="432" height="432" rx="82" fill="none" stroke="#37322a" stroke-width="10" />
-          <text x="256" y="322" font-size="228" text-anchor="middle" fill="#2e2a23" font-family="'Noto Serif TC', 'Songti TC', serif" font-weight="900">正</text>
+          <text x="256" y="322" font-size="228" text-anchor="middle" fill="#2e2a23" font-family="'Noto Serif TC', 'Songti TC', serif" font-weight="900">計</text>
           <circle cx="256" cy="390" r="14" fill="#a9714b" />
         </svg>
         <h1>人數統計小幫手</h1>
@@ -1259,7 +1259,7 @@
             "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>" +
             "<rect width='512' height='512' rx='112' fill='#f6f2ea'/>" +
             "<rect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='#37322a' stroke-width='10'/>" +
-            "<text x='256' y='322' font-size='228' text-anchor='middle' fill='#2e2a23' font-family='serif' font-weight='900'>正</text>" +
+            "<text x='256' y='322' font-size='228' text-anchor='middle' fill='#2e2a23' font-family='serif' font-weight='900'>計</text>" +
             "<circle cx='256' cy='390' r='14' fill='#a9714b'/></svg>";
           var manifest = {
             name: "人數統計小幫手",
