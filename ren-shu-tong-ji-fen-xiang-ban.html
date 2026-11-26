@@ -1,105 +1,127 @@
 <!doctype html>
-<html lang="zh-Hant" data-theme="mint">
+<html lang="zh-Hant" data-theme="marble">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content="人數統計小幫手：自己新增項目，來一人點一下，分項計算人數，還能保留每日紀錄。" />
     <!-- Add-to-home-screen support -->
-    <meta name="theme-color" id="meta-theme-color" content="#0f766e" />
+    <meta name="theme-color" id="meta-theme-color" content="#3d5546" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="人數統計" />
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='38' fill='%230f766e'/%3E%3Ctext x='90' y='118' font-size='84' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E%E4%BA%BA%3C/text%3E%3C/svg%3E" />
-    <!-- Empty inline icon: stops the browser fetching /favicon.ico, which
-         lives outside the artifact's routes and 404s. -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f766e'/%3E%3Ctext x='50' y='68' font-size='46' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E%E4%BA%BA%3C/text%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E6%AD%A3%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
+    <!-- Logo favicon: a minimal tally-mark stamp (the character 正 used for counting) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23f6f2ea'/%3E%3Crect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='%2337322a' stroke-width='10'/%3E%3Ctext x='256' y='322' font-size='228' text-anchor='middle' fill='%232e2a23' font-family='serif' font-weight='900'%3E%E6%AD%A3%3C/text%3E%3Ccircle cx='256' cy='390' r='14' fill='%23a9714b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
     <title>人數統計小幫手</title>
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #fafaf7;
-        --surface: #ffffff;
-        --text: #1c1917;
-        --dim: #6b7280;
-        --border: #e7e5e0;
-        --accent: #0f766e;
-        --accent-ink: #ffffff;
-        --danger: #dc2626;
-        --warn: #b45309;
-        --warn-solid: #d97706;
+        --bg: #f4f2ed;
+        --surface: #fdfcf9;
+        --text: #2c2822;
+        --dim: #6f6a5e;
+        --border: #ddd8cc;
+        --accent: #3d5546;
+        --accent-ink: #f5f2ea;
+        --danger: #b3372f;
+        --warn: #9a6a1f;
+        --warn-solid: #b07f2a;
         --radius: 16px;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #0f0f0f;
-          --surface: #1a1a1a;
-          --text: #f0f0f0;
-          --dim: #9ca3af;
-          --border: #2d2d2d;
-          --accent: #2dd4bf;
-          --accent-ink: #06281f;
-          --danger: #f87171;
-          --warn: #fbbf24;
+          --bg: #201e1b;
+          --surface: #2b2925;
+          --text: #f0ece2;
+          --dim: #a79f8f;
+          --border: #403d36;
+          --accent: #b3a58c;
+          --accent-ink: #221f1a;
+          --danger: #f0958a;
+          --warn: #eec27f;
         }
       }
 
-      /* ---- six selectable background themes (colour + texture) ----
-         Each theme sets the palette plus a --pattern "material" layered
-         over the page background. The chosen theme wins over the system
-         light/dark preference above. */
-      :root[data-theme="mint"] {
+      /* ---- six selectable 文青 background themes (colour + material) ----
+         Marble and wood grain lead; no pink, no purple. Each theme sets
+         the palette plus a --pattern "material" layered over the page
+         background. The chosen theme wins over the system light/dark
+         preference above. */
+      :root[data-theme="marble"] {
         color-scheme: light;
-        --bg: #f2f7f3; --surface: #ffffff; --text: #1c2420; --dim: #5f6f66;
-        --border: #dce8de; --accent: #0f766e; --accent-ink: #ffffff;
-        --danger: #dc2626; --warn: #b45309; --warn-solid: #d97706;
-        --pattern: radial-gradient(rgb(15 118 110 / 0.07) 1.2px, transparent 1.3px);
-        --pattern-size: 18px 18px;
-      }
-      :root[data-theme="sunset"] {
-        color-scheme: light;
-        --bg: #fdf4e7; --surface: #fffdf8; --text: #2b2018; --dim: #7d6a58;
-        --border: #f0ddc2; --accent: #c2410c; --accent-ink: #ffffff;
-        --danger: #dc2626; --warn: #b45309; --warn-solid: #d97706;
-        --pattern: repeating-linear-gradient(45deg, rgb(194 65 12 / 0.045) 0 10px, transparent 10px 20px);
-        --pattern-size: auto;
-      }
-      :root[data-theme="ocean"] {
-        color-scheme: light;
-        --bg: #edf5fa; --surface: #ffffff; --text: #16232c; --dim: #5b7182;
-        --border: #d3e4ee; --accent: #0369a1; --accent-ink: #ffffff;
-        --danger: #dc2626; --warn: #b45309; --warn-solid: #d97706;
-        --pattern: repeating-linear-gradient(0deg, rgb(3 105 161 / 0.05) 0 2px, transparent 2px 26px);
-        --pattern-size: auto;
-      }
-      :root[data-theme="sakura"] {
-        color-scheme: light;
-        --bg: #fdf1f4; --surface: #ffffff; --text: #2c1d22; --dim: #84626e;
-        --border: #f3d5dd; --accent: #be185d; --accent-ink: #ffffff;
-        --danger: #dc2626; --warn: #b45309; --warn-solid: #d97706;
+        --bg: #f4f2ed; --surface: #fdfcf9; --text: #2c2822; --dim: #6f6a5e;
+        --border: #ddd8cc; --accent: #3d5546; --accent-ink: #f5f2ea;
+        --danger: #b3372f; --warn: #9a6a1f; --warn-solid: #b07f2a;
         --pattern:
-          radial-gradient(rgb(190 24 93 / 0.08) 2px, transparent 2.6px),
-          radial-gradient(rgb(190 24 93 / 0.05) 1.4px, transparent 2px);
-        --pattern-size: 34px 34px, 22px 22px;
+          linear-gradient(112deg, transparent 0 42%, rgb(70 68 60 / 0.055) 42.3% 42.7%, transparent 43.6%),
+          linear-gradient(63deg, transparent 0 63%, rgb(70 68 60 / 0.05) 63.2% 63.9%, transparent 64.8%),
+          linear-gradient(158deg, transparent 0 27%, rgb(122 110 88 / 0.05) 27.2% 27.6%, transparent 28.4%),
+          radial-gradient(ellipse 60% 40% at 78% 10%, rgb(148 144 132 / 0.10), transparent 70%),
+          radial-gradient(ellipse 55% 38% at 10% 88%, rgb(148 144 132 / 0.09), transparent 70%);
+        --pattern-size: 340px 340px, 430px 430px, 300px 300px, 480px 480px, 520px 520px;
       }
-      :root[data-theme="grape"] {
+      :root[data-theme="stone"] {
         color-scheme: light;
-        --bg: #f4f0fa; --surface: #ffffff; --text: #241d30; --dim: #6f6484;
-        --border: #e0d6f0; --accent: #6d28d9; --accent-ink: #ffffff;
-        --danger: #dc2626; --warn: #b45309; --warn-solid: #d97706;
+        --bg: #e6e4df; --surface: #f4f3f0; --text: #26241f; --dim: #625e55;
+        --border: #cfccc2; --accent: #4c4a45; --accent-ink: #f4f2ec;
+        --danger: #b3372f; --warn: #9a6a1f; --warn-solid: #b07f2a;
         --pattern:
-          repeating-linear-gradient(0deg, rgb(109 40 217 / 0.05) 0 1px, transparent 1px 24px),
-          repeating-linear-gradient(90deg, rgb(109 40 217 / 0.05) 0 1px, transparent 1px 24px);
-        --pattern-size: auto;
+          linear-gradient(118deg, transparent 0 38%, rgb(58 56 50 / 0.08) 38.3% 38.8%, transparent 39.7%),
+          linear-gradient(52deg, transparent 0 58%, rgb(58 56 50 / 0.06) 58.2% 59%, transparent 59.9%),
+          linear-gradient(164deg, transparent 0 71%, rgb(110 100 84 / 0.06) 71.2% 71.6%, transparent 72.4%),
+          radial-gradient(ellipse 62% 42% at 15% 8%, rgb(118 116 108 / 0.13), transparent 70%),
+          radial-gradient(ellipse 50% 36% at 88% 90%, rgb(118 116 108 / 0.11), transparent 70%);
+        --pattern-size: 360px 360px, 420px 420px, 310px 310px, 500px 500px, 540px 540px;
       }
-      :root[data-theme="night"] {
+      :root[data-theme="oak"] {
+        color-scheme: light;
+        --bg: #e7d6ba; --surface: #f8f0de; --text: #33291d; --dim: #77644c;
+        --border: #d3bd97; --accent: #7c5a38; --accent-ink: #faf3e3;
+        --danger: #b3372f; --warn: #96690f; --warn-solid: #a8741f;
+        --pattern:
+          repeating-linear-gradient(1deg, rgb(110 76 44 / 0.05) 0 2px, transparent 2px 9px),
+          repeating-linear-gradient(-1deg, rgb(110 76 44 / 0.035) 0 1px, transparent 1px 23px),
+          radial-gradient(ellipse 26% 46% at 68% 30%, rgb(110 76 44 / 0.06), transparent 70%),
+          linear-gradient(0deg, transparent 0 calc(100% - 2px), rgb(96 64 36 / 0.16) calc(100% - 2px) 100%);
+        --pattern-size: auto, auto, 320px 320px, 100% 300px;
+      }
+      :root[data-theme="walnut"] {
         color-scheme: dark;
-        --bg: #131519; --surface: #1e2127; --text: #f3f4f6; --dim: #a3aab6;
-        --border: #343943; --accent: #2dd4bf; --accent-ink: #052e28;
-        --danger: #f87171; --warn: #fbbf24; --warn-solid: #d97706;
-        --pattern: radial-gradient(rgb(255 255 255 / 0.055) 1.1px, transparent 1.2px);
-        --pattern-size: 22px 22px;
+        --bg: #463322; --surface: #54402a; --text: #f2e8d5; --dim: #cdbb9c;
+        --border: #6b543a; --accent: #d3ab72; --accent-ink: #2c1e10;
+        --danger: #f0958a; --warn: #eec27f; --warn-solid: #c98f2e;
+        --pattern:
+          repeating-linear-gradient(1deg, rgb(240 214 170 / 0.05) 0 2px, transparent 2px 9px),
+          repeating-linear-gradient(-1deg, rgb(240 214 170 / 0.035) 0 1px, transparent 1px 23px),
+          radial-gradient(ellipse 26% 46% at 30% 62%, rgb(0 0 0 / 0.16), transparent 70%),
+          linear-gradient(0deg, transparent 0 calc(100% - 2px), rgb(0 0 0 / 0.3) calc(100% - 2px) 100%);
+        --pattern-size: auto, auto, 320px 320px, 100% 300px;
+      }
+      :root[data-theme="forest"] {
+        color-scheme: dark;
+        --bg: #24382b; --surface: #2e4636; --text: #eef0e4; --dim: #a9bda6;
+        --border: #41594a; --accent: #c9a86b; --accent-ink: #232d1e;
+        --danger: #f0958a; --warn: #eec27f; --warn-solid: #c98f2e;
+        --pattern:
+          repeating-linear-gradient(0deg, rgb(255 255 255 / 0.022) 0 1px, transparent 1px 4px),
+          repeating-linear-gradient(90deg, rgb(0 0 0 / 0.05) 0 1px, transparent 1px 4px);
+        --pattern-size: auto;
+      }
+      :root[data-theme="charcoal"] {
+        color-scheme: dark;
+        --bg: #201e1b; --surface: #2b2925; --text: #f0ece2; --dim: #a79f8f;
+        --border: #403d36; --accent: #b3a58c; --accent-ink: #221f1a;
+        --danger: #f0958a; --warn: #eec27f; --warn-solid: #c98f2e;
+        --pattern:
+          linear-gradient(115deg, transparent 0 55%, rgb(240 236 226 / 0.05) 55.2% 55.6%, transparent 56.4%),
+          linear-gradient(70deg, transparent 0 30%, rgb(240 236 226 / 0.04) 30.2% 30.8%, transparent 31.6%),
+          radial-gradient(ellipse 55% 40% at 80% 15%, rgb(240 236 226 / 0.05), transparent 70%);
+        --pattern-size: 380px 380px, 300px 300px, 500px 500px;
       }
 
       * { box-sizing: border-box; }
@@ -109,9 +131,12 @@
         background-image: var(--pattern, none);
         background-size: var(--pattern-size, auto);
         color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
-          "PingFang SC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC",
+          "PingFang SC", "Microsoft JhengHei", sans-serif;
         -webkit-font-smoothing: antialiased;
+      }
+      .serif, .app-head h1, .total-head .total, .guide-card h2, .records h2 {
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
       }
       button, input { font: inherit; color: inherit; }
       button { cursor: pointer; }
@@ -133,7 +158,13 @@
 
       /* ---- tool name header ---- */
       .app-head { text-align: center; padding: 1.75rem 0 0; }
-      .app-head h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: 0.02em; margin: 0; line-height: 1.25; }
+      .logo-mark {
+        width: 4.5rem; height: 4.5rem;
+        border-radius: 22%;
+        display: block;
+        margin: 0 auto 0.75rem;
+      }
+      .app-head h1 { font-size: 1.75rem; font-weight: 900; letter-spacing: 0.08em; margin: 0; line-height: 1.25; }
       .app-head .tagline { font-size: 0.9375rem; color: var(--dim); margin: 0.375rem 0 0; line-height: 1.6; }
       .install-zone { margin-top: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.375rem; }
       .install-btn {
@@ -398,6 +429,12 @@
     <main>
       <!-- Tool name -->
       <header class="app-head">
+        <svg class="logo-mark" viewBox="0 0 512 512" role="img" aria-label="人數統計小幫手標誌：正字記數印章">
+          <rect width="512" height="512" rx="112" fill="#f6f2ea" />
+          <rect x="40" y="40" width="432" height="432" rx="82" fill="none" stroke="#37322a" stroke-width="10" />
+          <text x="256" y="322" font-size="228" text-anchor="middle" fill="#2e2a23" font-family="'Noto Serif TC', 'Songti TC', serif" font-weight="900">正</text>
+          <circle cx="256" cy="390" r="14" fill="#a9714b" />
+        </svg>
         <h1>人數統計小幫手</h1>
         <p class="tagline">自己新增項目，來一人點一下，每個項目的人數分開算，最上面自動加總。</p>
         <div class="install-zone" id="install-zone">
@@ -428,33 +465,33 @@
         <p class="saved-note" id="saved-note" hidden>已保留成紀錄，目前數字已歸零。</p>
       </section>
 
-      <!-- Background theme picker: six colour + texture versions -->
+      <!-- Background theme picker: six 文青 colour + material versions -->
       <section class="card panel" aria-label="背景樣式">
         <span class="field-label" id="theme-label">背景樣式（顏色・材質，點一下就換）</span>
         <div class="theme-grid" role="group" aria-labelledby="theme-label" id="theme-grid">
-          <button class="theme-btn" type="button" data-theme-value="mint" aria-pressed="true">
-            <span class="swatch" style="background: radial-gradient(circle at 35% 35%, #5ec9bc, #0f766e)" aria-hidden="true"></span>
-            <span>清新薄荷<span class="theme-material">細點・紙感</span></span>
+          <button class="theme-btn" type="button" data-theme-value="marble" aria-pressed="true">
+            <span class="swatch" style="background: linear-gradient(125deg, #fdfcf8 55%, #d8d4c9 56%, #fdfcf8 59%, #efede6)" aria-hidden="true"></span>
+            <span>大理岩白<span class="theme-material">大理石・雲紋</span></span>
           </button>
-          <button class="theme-btn" type="button" data-theme-value="sunset" aria-pressed="false">
-            <span class="swatch" style="background: repeating-linear-gradient(45deg, #f6c177 0 4px, #e2703a 4px 8px)" aria-hidden="true"></span>
-            <span>暖陽橘<span class="theme-material">斜紋・布感</span></span>
+          <button class="theme-btn" type="button" data-theme-value="stone" aria-pressed="false">
+            <span class="swatch" style="background: linear-gradient(125deg, #d9d7d1 55%, #a3a099 56%, #d9d7d1 60%, #c4c1ba)" aria-hidden="true"></span>
+            <span>大理岩灰<span class="theme-material">大理石・霧紋</span></span>
           </button>
-          <button class="theme-btn" type="button" data-theme-value="ocean" aria-pressed="false">
-            <span class="swatch" style="background: repeating-linear-gradient(0deg, #7cc0e8 0 3px, #0369a1 3px 6px)" aria-hidden="true"></span>
-            <span>海洋藍<span class="theme-material">橫紋・水波感</span></span>
+          <button class="theme-btn" type="button" data-theme-value="oak" aria-pressed="false">
+            <span class="swatch" style="background: repeating-linear-gradient(0deg, #dcbd93 0 3px, #cda671 3px 6px)" aria-hidden="true"></span>
+            <span>原木淺<span class="theme-material">木紋・橡木</span></span>
           </button>
-          <button class="theme-btn" type="button" data-theme-value="sakura" aria-pressed="false">
-            <span class="swatch" style="background: radial-gradient(circle at 40% 40%, #f9a8c9, #be185d)" aria-hidden="true"></span>
-            <span>櫻花粉<span class="theme-material">圓點・花瓣感</span></span>
+          <button class="theme-btn" type="button" data-theme-value="walnut" aria-pressed="false">
+            <span class="swatch" style="background: repeating-linear-gradient(0deg, #5d4430 0 3px, #3f2d1d 3px 6px)" aria-hidden="true"></span>
+            <span>胡桃木<span class="theme-material">木紋・深棕</span></span>
           </button>
-          <button class="theme-btn" type="button" data-theme-value="grape" aria-pressed="false">
-            <span class="swatch" style="background: repeating-linear-gradient(90deg, #b79ced 0 3px, #6d28d9 3px 6px)" aria-hidden="true"></span>
-            <span>葡萄紫<span class="theme-material">格紋・方格紙</span></span>
+          <button class="theme-btn" type="button" data-theme-value="forest" aria-pressed="false">
+            <span class="swatch" style="background: radial-gradient(circle at 35% 35%, #476b52, #24382b)" aria-hidden="true"></span>
+            <span>墨綠<span class="theme-material">布紋・書卷</span></span>
           </button>
-          <button class="theme-btn" type="button" data-theme-value="night" aria-pressed="false">
-            <span class="swatch" style="background: radial-gradient(circle at 35% 35%, #4b5563, #131519)" aria-hidden="true"></span>
-            <span>深夜黑<span class="theme-material">暗色・星點</span></span>
+          <button class="theme-btn" type="button" data-theme-value="charcoal" aria-pressed="false">
+            <span class="swatch" style="background: linear-gradient(125deg, #3b3833 55%, #6e675a 56%, #3b3833 59%, #201e1b)" aria-hidden="true"></span>
+            <span>炭黑<span class="theme-material">石紋・墨黑</span></span>
           </button>
         </div>
       </section>
@@ -537,8 +574,8 @@
           <li>
             <span class="guide-num" aria-hidden="true">6</span>
             <div class="guide-step-body">
-              <p class="guide-step-title">換背景：六種樣式任選</p>
-              <p class="guide-step-desc">在「背景樣式」點一下就能換顏色和材質：清新薄荷、暖陽橘、海洋藍、櫻花粉、葡萄紫、深夜黑，共六種，選好會記在這支手機裡。</p>
+              <p class="guide-step-title">換背景：六種文青樣式任選</p>
+              <p class="guide-step-desc">在「背景樣式」點一下就能換顏色和材質：大理岩白、大理岩灰、原木淺、胡桃木、墨綠、炭黑，有大理石紋也有木紋，共六種，選好會記在這支手機裡。</p>
             </div>
           </li>
           <li>
@@ -1188,15 +1225,15 @@
           if (e.key === "Escape" && !guideOverlay.hidden) hideGuide();
         });
 
-        /* ---------- background theme: six colour + texture versions ---------- */
+        /* ---------- background theme: six 文青 colour + material versions ---------- */
         var THEME_KEY = "ren-shu-tong-ji-share-theme-v1";
         var THEME_COLORS = {
-          mint: "#0f766e", sunset: "#c2410c", ocean: "#0369a1",
-          sakura: "#be185d", grape: "#6d28d9", night: "#131519"
+          marble: "#3d5546", stone: "#4c4a45", oak: "#7c5a38",
+          walnut: "#463322", forest: "#24382b", charcoal: "#201e1b"
         };
         var themeBtns = document.querySelectorAll(".theme-btn");
         function applyTheme(name) {
-          if (!THEME_COLORS[name]) name = "mint";
+          if (!THEME_COLORS[name]) name = "marble";
           document.documentElement.setAttribute("data-theme", name);
           var meta = document.getElementById("meta-theme-color");
           if (meta) meta.setAttribute("content", THEME_COLORS[name]);
@@ -1205,8 +1242,8 @@
           });
           try { localStorage.setItem(THEME_KEY, name); } catch (e) { /* theme just won't persist */ }
         }
-        var savedTheme = "mint";
-        try { savedTheme = localStorage.getItem(THEME_KEY) || "mint"; } catch (e) {}
+        var savedTheme = "marble";
+        try { savedTheme = localStorage.getItem(THEME_KEY) || "marble"; } catch (e) {}
         applyTheme(savedTheme);
         themeBtns.forEach(function (btn) {
           btn.addEventListener("click", function () {
@@ -1220,16 +1257,18 @@
         try {
           var iconSvg =
             "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>" +
-            "<rect width='512' height='512' rx='110' fill='#0f766e'/>" +
-            "<text x='256' y='335' font-size='240' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>人</text></svg>";
+            "<rect width='512' height='512' rx='112' fill='#f6f2ea'/>" +
+            "<rect x='40' y='40' width='432' height='432' rx='82' fill='none' stroke='#37322a' stroke-width='10'/>" +
+            "<text x='256' y='322' font-size='228' text-anchor='middle' fill='#2e2a23' font-family='serif' font-weight='900'>正</text>" +
+            "<circle cx='256' cy='390' r='14' fill='#a9714b'/></svg>";
           var manifest = {
             name: "人數統計小幫手",
             short_name: "人數統計",
             start_url: ".",
             scope: ".",
             display: "standalone",
-            background_color: "#f2f7f3",
-            theme_color: "#0f766e",
+            background_color: "#f4f2ed",
+            theme_color: "#37322a",
             icons: [{
               src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(iconSvg),
               sizes: "any",
